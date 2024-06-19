@@ -1,15 +1,21 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
+import connectToMongoDB from './db/connectToMongoDB.js';
+import authRoutes from './routes/auth.routes.js';
 
 dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/v1/auth', authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  connectToMongoDB();
 });
