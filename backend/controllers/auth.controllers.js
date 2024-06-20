@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import argon2 from "argon2";
 import { z } from 'zod';
 import { generateToken } from "../utils/generateToken.js";
+import Account from "../models/account.model.js";
 
 const signupBody = z.object({
   username: z.string().min(3).max(30),
@@ -40,6 +41,14 @@ export const signup = async (req, res) => {
 
     if (newUser) {
       await newUser.save();
+
+      const newAccount = new Account({
+        userId: newUser._id,
+        balance: Math.floor(Math.random() * 10000) + 1,
+      });
+
+      await newAccount.save();
+
       res.status(201).json({
         _id: newUser._id,
         username: newUser.username,

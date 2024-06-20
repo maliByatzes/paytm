@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import connectToMongoDB from './db/connectToMongoDB.js';
 import authRoutes from './routes/auth.routes.js';
 import userRoutes from './routes/user.routes.js';
+import accountRoutes from './routes/account.routes.js';
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/accounts', accountRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
