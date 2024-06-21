@@ -16,6 +16,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="min-h-screen flex items-center justify-center">
         <Routes>
+          <Route path="/" element={authUser ? <Navigate to="/dashboard" /> : <Navigate to="/signin" />} />
           <Route path="/signup" element={authUser ? <Navigate to="/dashboard" /> : <SignUp />} />
           <Route path="/signin" element={authUser ? <Navigate to="/dashboard" /> : <SignIn />} />
           <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/signin" />} />
