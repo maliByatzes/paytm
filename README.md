@@ -23,6 +23,8 @@ A PayTM like application that let’s users send money to each other given an in
 
 Visit [here](https://paytm-qfpi.onrender.com/) to access the application.
 
+**NOTE**: The application is hosted on Render free tier therefore it may take some time to load.
+
 ## Todos
 
 - [ ] Allow users to edit their profile.
