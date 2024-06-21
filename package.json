@@ -4,8 +4,9 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "pnpm install && pnpm --filter frontend install && pnpm --filter frontend build"
   },
   "type": "module",
   "keywords": [],
