@@ -25,11 +25,11 @@ Visit [here](https://paytm-qfpi.onrender.com/) to access the application.
 
 ## Todos
 
-- [x] ~~Implement logout feature.~~
 - [ ] Allow users to edit their profile.
 - [ ] Implement the search users feature.
-- [ ] Add dark/light mode feature.
 - [ ] Make the UI responsive.
+- [x] ~~Implement logout feature.~~
+- [x] ~~Add dark/light mode feature.~~
 
 ## License
 
