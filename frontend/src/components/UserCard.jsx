@@ -14,16 +14,17 @@ const UserCard = ({ user }) => {
     e.preventDefault();
     await transferMoney(user._id, amount);
   };
-  
+
   return (
-    <div className="flex items-center justify-between my-4 px-4">
+    <div className="flex items-center justify-between my-4 sm:px-4">
       <div className="flex items-center justify-center gap-3">
         <Avatar>
           <AvatarImage src="" />
-          <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>  
+          <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>
         </Avatar>
 
-        <p className="font-bold text-xl">{user.username}</p>
+        <p className="hidden sm:block font-bold text-xl">{user.firstName + " " + user.lastName}</p>
+        <p className="sm:hidden font-bold text-xl">{user.firstName}</p>
       </div>
 
       <Dialog>
@@ -37,7 +38,7 @@ const UserCard = ({ user }) => {
               <div className="flex items-center justify-center gap-4">
                 <Avatar>
                   <AvatarImage src="" />
-                  <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>  
+                  <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>
                 </Avatar>
 
                 <p className="font-bold text-xl">{user.firstName}</p>
@@ -46,8 +47,8 @@ const UserCard = ({ user }) => {
               <p className="font-semibold text-sm">Amount (in Rs)</p>
 
               <form className="flex flex-col justify-center gap-3 w-full" onSubmit={handleSubmit}>
-                <Input 
-                  type="text" 
+                <Input
+                  type="text"
                   placeholder="Enter amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}

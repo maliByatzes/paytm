@@ -23,10 +23,10 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col h-screen w-full">
       <div className="flex items-center justify-between px-5 py-4">
-        <h1 className="text-2xl font-bold">Payments App</h1>
+        <h1 className="text-md sm:text-2xl font-bold">Payments App</h1>
 
         <div className="flex items-center justify-center gap-2">
-          <p>Hello, {authUser.username}</p>
+          <p className="hidden sm:block">Hello, {authUser.username}</p>
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>

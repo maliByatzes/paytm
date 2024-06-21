@@ -27,7 +27,7 @@ Visit [here](https://paytm-qfpi.onrender.com/) to access the application.
 
 - [ ] Allow users to edit their profile.
 - [ ] Implement the search users feature.
-- [ ] Make the UI responsive.
+- [x] ~~Make the UI responsive.~~
 - [x] ~~Implement logout feature.~~
 - [x] ~~Add dark/light mode feature.~~
 
