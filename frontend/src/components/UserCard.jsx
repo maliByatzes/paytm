@@ -2,17 +2,28 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import useTransferMoney from "../hooks/useTransferMoney";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
-const UserCard = () => {
+const UserCard = ({ user }) => {
+  const [amount, setAmount] = useState("");
+  const { loading, transferMoney } = useTransferMoney();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await transferMoney(user._id, amount);
+  };
+  
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between my-4 px-4">
       <div className="flex items-center justify-center gap-3">
         <Avatar>
           <AvatarImage src="" />
-          <AvatarFallback>U</AvatarFallback>  
+          <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>  
         </Avatar>
 
-        <p className="font-bold text-xl">User</p>
+        <p className="font-bold text-xl">{user.username}</p>
       </div>
 
       <Dialog>
@@ -26,18 +37,25 @@ const UserCard = () => {
               <div className="flex items-center justify-center gap-4">
                 <Avatar>
                   <AvatarImage src="" />
-                  <AvatarFallback>U</AvatarFallback>  
+                  <AvatarFallback>{user.username[0].toUpperCase()}</AvatarFallback>  
                 </Avatar>
 
-                <p className="font-bold text-xl">User's Name</p>
+                <p className="font-bold text-xl">{user.firstName}</p>
               </div>
 
               <p className="font-semibold text-sm">Amount (in Rs)</p>
 
-              <form className="flex flex-col justify-center gap-3 w-full">
-                <Input type="text" placeholder="Enter amount" />
+              <form className="flex flex-col justify-center gap-3 w-full" onSubmit={handleSubmit}>
+                <Input 
+                  type="text" 
+                  placeholder="Enter amount"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
 
-                <Button>Initiate Transfer</Button>
+                <Button>
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Initiate Transfer" }
+                </Button>
               </form>
             </div>
           </DialogHeader>

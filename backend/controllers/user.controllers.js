@@ -60,9 +60,11 @@ export const updateUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
   try {
+    const userId = req.user._id;
     const filter = req.query.filter || "";
-
+    
     const users = await User.find({
+      _id: { $ne: userId },
       $or: [{
         firstName: { $regex: filter }
       }, {

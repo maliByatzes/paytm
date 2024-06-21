@@ -30,8 +30,6 @@ const Dashboard = () => {
       <div className="flex flex-col items-start justify-center px-4 gap-4">
         <p className="font-semibold text-2xl">Users</p>
 
-        <Input type="text" placeholder="Search users..." />
-
         <Users />
       </div>
     </div>
