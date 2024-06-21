@@ -12,7 +12,7 @@ export const generateToken = async (userId, res) => {
 
   res.cookie("jwt", jwt_token, {
     httpOnly: true,
-    sameSite: "none",
+    sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     maxAge: 15 * 24 * 60 * 60 * 1000,
     expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
