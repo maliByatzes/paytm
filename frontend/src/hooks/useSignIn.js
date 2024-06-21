@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const useSignIn = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ const useSignIn = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/v1/auth/signin', {
+      const res = await fetch('/api/v1/auth/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -26,9 +27,9 @@ const useSignIn = () => {
       localStorage.setItem("site-user", JSON.stringify(data));
       setAuthUser(data);
 
-      // toast.success('Successful login');
+      toast.success('Successful login');
     } catch (error) {
-      // toast.error(error.message);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -39,7 +40,7 @@ const useSignIn = () => {
 
 function validateInput({ username, password }) {
   if (!username || !password) {
-    // toast.error('Provide all fields');
+    toast.error('Provide all fields');
     return false;
   }
   return true;

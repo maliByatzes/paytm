@@ -7,6 +7,7 @@ import Send from "./pages/send/Send"
 import { ThemeProvider } from "@/components/theme-provider"
 import { useAuthContext } from "./context/AuthContext"
 import { Navigate } from "react-router-dom"
+import { Toaster } from "react-hot-toast"
 
 function App() {
   const { authUser } = useAuthContext();
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/signin" />} />
           <Route path="/send" element={authUser ? <Send /> : <Navigate to="/signin" />} />
         </Routes>
+        <Toaster />
       </div>
     </ThemeProvider>
   )

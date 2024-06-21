@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import useSignUp from "@/src/hooks/useSignUp";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -12,9 +14,11 @@ const SignUp = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const { loading, signup } = useSignUp();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    await signup(formData);
   };
 
   const handleInputChange = (e) => {
@@ -75,7 +79,7 @@ const SignUp = () => {
         </div>
 
         <Button className="w-full p-2">
-          Sign Up
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign Up"}
         </Button>
       </form>
 

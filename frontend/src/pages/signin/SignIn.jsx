@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import useSignIn from "@/src/hooks/useSignIn";
+import { Loader2 } from "lucide-react";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -10,9 +12,11 @@ const SignIn = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const { loading, signin } = useSignIn();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    await signin(formData);
   };
 
   const handleInputChange = (e) => {
@@ -51,7 +55,7 @@ const SignIn = () => {
         </div>
 
         <Button className="w-full p-2">
-          Sign In
+          {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign In"}
         </Button>
       </form>
 
