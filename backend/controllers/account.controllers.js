@@ -1,5 +1,6 @@
 import User from '../models/user.model.js';
 import Account from '../models/account.model.js';
+import Transfer from '../models/transfer.model.js';
 import mongoose from 'mongoose';
 
 export const getBalance = async (req, res) => {
