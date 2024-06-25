@@ -54,8 +54,15 @@ export const transferMoney = async (req, res) => {
     account.balance -= amount;
     receiverAccount.balance += amount;
 
+    const newTransfer = new Transfer({
+      fromAccount: account._id,
+      toAccount: receiverAccount._id,
+      amount,
+    });
+
     await account.save({ session });
     await receiverAccount.save({ session });
+    await newTransfer.save({ session });
 
     await session.commitTransaction();
     session.endSession();
